@@ -1,3 +1,9 @@
+<?php
+
+    include "bloglogic.php"
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,11 +40,11 @@
 
                         <div class="link">
                             <ul>
-                                <li><a href="Pharmacy.html">Pharmacy</a> </li>
-                                <li><a href="Doctor_appointment.html">Consultancy</a></li>
-                                <li><a href="Blood_request.html">Blood Request</a></li>
+                                <li><a href="Pharmacy.php">Pharmacy</a> </li>
+                                <li><a href="Doctor_appointment.php">Consultancy</a></li>
+                                <li><a href="Blood_request.php">Blood Request</a></li>
                                 <li><a href="">Campaign</a></li>
-                                <li><a href="Blogs.html">Blogs</a></li>
+                                <li><a href="Blog.php">Blogs</a></li>
                             </ul>
                         </div>
                     </div>
@@ -46,18 +52,66 @@
                 <div class="col-2">
                     <div class="rightpart">
 
-                        <button type="button" class="btn btn-light loginkey">LOGIN</button>
-                        <button type="button" class="btn btn-success">REGISTER</button>
+                        <!-- <button type="button" class="btn btn-light loginkey">LOGIN</button>
+                        <button type="button" class="btn btn-success">REGISTER</button> -->
+                        <button type="button" class="btn btn-outline-success">Create Blog</button>
+                        
                     </div>
                 </div>
             </div>
-
-
-
         </nav>
     </div>
 </section>
 <!-- MENU SECTION ENDS -->
+
+<section id="banner">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images\blog.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Post Your Blogs</h5>
+                        <div class="text-center">
+                            <a href="createblog.php" class="btn btn-success">CREATE BLOG</a>
+                        </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="images\blog1.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Post Your Blogs</h5>
+                        <div class="text-center">
+                            <a href="createblog.php" class="btn btn-success">CREATE BLOG</a>
+                        </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="images\blog2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Post Your Blogs</h5>
+                        <div class="text-center">
+                            <a href="createblog.php" class="btn btn-success">CREATE BLOG</a>
+                        </div>
+                    
+                </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="clr"></div>
+</section>
+<!-- BANNER ENDS -->
 
 <!-- HEADING OF PAGE -->
 <div id="page_top">
@@ -67,10 +121,7 @@
                 <h1>TRENDING BLOGS</h1>
             </div>
             <div class="caption">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus aliquam alias expedita.
-                    Vero voluptate libero consequuntur consectetur, veritatis nihil minima autem, earum mollitia
-                    odio
-                    voluptatem corporis dolor delectus magnam quas?</p>
+                <p>Here you can find the exclusive blogs posted by the doctors and the teahcers of this</p>
             </div>
 
 
@@ -131,18 +182,20 @@
     </div>
     <div class="container">
         <div class="row">
+            <?php foreach($query as $q){?>
+
             <div class="col-4 col-md-3">
-                <a href=""><div class="card" style="width: 15rem;">
+                <a href="blogview.php?id=<?php echo $q['id'];?>"><div class="card" style="width: 15rem;">   <!-- redirecting to blogview page after clicking on the card -->
                         <img src="images/blog_pic.png" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h6>blog title</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <h6 class="card-title"><?php echo $q ['title'];?></h6>          <!-- fetching blog title -->
+                            <p class="card-text"><?php echo $q['content_1'];?></p>          <!-- fetching blog short description -->
                         </div>
                     </div></a>
             </div>
+            <?php } ?>
             <div class="col-4 col-md-3">
-                <a href=""><div class="card" style="width: 15rem;">
+                <a href="blogview.php?id=<?php echo $q['id'];?>"><div class="card" style="width: 15rem;">  
                         <img src="images/blog_pic.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h6>blog title</h6>
