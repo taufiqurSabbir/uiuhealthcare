@@ -14,6 +14,11 @@ include "admin_header.php";
             </div>
         </div>
     </div>
+    <div>
+      <h1>chgangeddd
+        
+      </h1>
+    </div>
 
   <form action="add_blog.php" method="post" enctype="multipart/form-data">
   <div class="mb-3">
